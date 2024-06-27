@@ -10,7 +10,6 @@ Uma aplicação mobile para visualizar os Ativos de cada Compania em forma de á
 4. [Uso](#uso)
 5. [Demonstração](#demonstração)
 6. [Estrutura do Projeto](#estrutura-do-projeto)
-7. [Contribuição](#contribuição)
 
 ## Requisitos
 
@@ -95,11 +94,5 @@ tractian-challenge
 
 - Os arquivos **pubspec.yml** e **pubspec-lock** contêm assets, configurações e outras dependências do projeto.
 
-## Contribuição
-
-- Crie uma branch para a sua feature (`$ git checkout -b feature/nova-feature`)
-- Após a implementação, faça o build da aplicação (`$ flutter build apk`)
-- Faça commit das suas alterações (`$ git commit -am 'Adiciona nova feature'`)
-- Faça push para a branch (`$ git push origin feature/nova-feature`)
 
 Desenvolvido por [Murilo Gomes Ferraz](https://github.com/zarref-semog) 
