@@ -93,5 +93,7 @@ tractian-challenge
 - O diretório **lib** contém os arquivos **router_generator** (gerador de rotas) e **main.dart**.
 
 - Os arquivos **pubspec.yml** e **pubspec-lock** contêm assets, configurações e outras dependências do projeto.
-<br>
-Desenvolvido por [Murilo Gomes Ferraz](https://github.com/zarref-semog) 
+
+
+
+Desenvolvido por [Murilo Gomes Ferraz](https://github.com/zarref-semog)
