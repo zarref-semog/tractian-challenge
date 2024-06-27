@@ -5,17 +5,17 @@ Uma aplicação mobile para visualizar os Ativos de cada Compania em forma de á
 ## Índice
 
 1. [Requisitos](#requisitos)
-2. [Instalação](#instalacao)
-3. [Configuração](#configuracao)
+2. [Instalação](#instalação)
+3. [Configuração](#configuração)
 4. [Uso](#uso)
-5. [Demonstração](#demonstracao)
+5. [Demonstração](#demonstração)
 6. [Estrutura do Projeto](#estrutura-do-projeto)
-7. [Contribuição](#contribuicao)
+7. [Contribuição](#contribuição)
 
 ## Requisitos
 
 Para rodar esse projeto você precisará instalar o [Git](https://git-scm.com/downloads), [Android Studio](https://developer.android.com/studio/install?hl=pt-br) e o [Flutter](https://docs.flutter.dev/get-started/install) na sua máquina. Você pode usar a IDE do Android Studio para visualizar o projeto ou usar outra IDE de sua preferência, como [VSCode](https://code.visualstudio.com/download).
-<a id="instalacao"></a>
+
 ## Instalação
 
 Para instalar o projeto, abra o **Explorador de Arquivos** e crie uma pasta no diretório de sua preferência, navegue até essa pasta, abra o terminal e execute o seguinte comando:
