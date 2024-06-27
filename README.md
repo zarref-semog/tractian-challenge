@@ -1,6 +1,6 @@
 # TRACTIAN CHALLENGE - ASSET TREE VIEW
 
-Uma aplicação mobile para visualizar os Ativos de cada Compania em forma de árvore.
+Desenvolver uma aplicação mobile em Flutter, para visualizar os Ativos e Componentes das Companias em forma de árvore.
 
 ## Índice
 
@@ -8,8 +8,9 @@ Uma aplicação mobile para visualizar os Ativos de cada Compania em forma de á
 2. [Instalação](#instalação)
 3. [Configuração](#configuração)
 4. [Uso](#uso)
-5. [Demonstração](#demonstração)
-6. [Estrutura do Projeto](#estrutura-do-projeto)
+5. [Protótipo](#prototipo)
+6. [Demonstração](#demonstração)
+7. [Estrutura do Projeto](#estrutura-do-projeto)
 
 ## Requisitos
 
@@ -61,6 +62,10 @@ Em seguida, execute ```flutter run``` para rodar o projeto:
 $ flutter run
 ```
 
+## Protótipo
+
+[Link do Protótipo](https://www.figma.com/design/IP50SSLkagXsUNWiZj0PjP/%5BCareers%5D-Flutter-Challenge-v2?node-id=0-1&t=3g9gWmzy26ibYRyT-1)
+
 ## Demonstração
 
 [Link do Video](https://youtube.com)
@@ -93,7 +98,5 @@ tractian-challenge
 - O diretório **lib** contém os arquivos **router_generator** (gerador de rotas) e **main.dart**.
 
 - Os arquivos **pubspec.yml** e **pubspec-lock** contêm assets, configurações e outras dependências do projeto.
-
-
 
 Desenvolvido por [Murilo Gomes Ferraz](https://github.com/zarref-semog)
