@@ -8,7 +8,7 @@ Desenvolver uma aplicação mobile em Flutter, para visualizar os Ativos e Compo
 2. [Instalação](#instalação)
 3. [Configuração](#configuração)
 4. [Uso](#uso)
-5. [Protótipo](#prototipo)
+5. [Protótipo](#protótipo)
 6. [Demonstração](#demonstração)
 7. [Estrutura do Projeto](#estrutura-do-projeto)
 
