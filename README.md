@@ -95,4 +95,6 @@ tractian-challenge
 - Os arquivos **pubspec.yml** e **pubspec-lock** contêm assets, configurações e outras dependências do projeto.
 
 
+
+
 Desenvolvido por [Murilo Gomes Ferraz](https://github.com/zarref-semog) 
