@@ -72,7 +72,7 @@ $ flutter run
 
 [Video Link](https://youtu.be/KDt6Vs-RKYY)
 
-## Estrutura do Projeto
+## Project Structure
 
 ```bash
 tractian-challenge
