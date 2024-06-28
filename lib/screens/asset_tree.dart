@@ -155,13 +155,13 @@ class _AssetTreeState extends State<AssetTree> {
                   if (searchController.text != "") {
                     expandParents(_treeController, searchController.text);
                   } else {
-                    FocusScope.of(context).unfocus();
                     setState(() {
                       sensorFilter = false;
                       alertFilter = false;
                       _updateTreeNodes(widget.data);
                     });
                   }
+                  FocusScope.of(context).unfocus();
                 },
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(0.0),
