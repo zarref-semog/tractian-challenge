@@ -1,74 +1,76 @@
 # TRACTIAN CHALLENGE - ASSET TREE VIEW
 
-Desenvolver uma aplicação mobile em Flutter, para visualizar os Ativos e Componentes das Companias em forma de árvore.
+Develop a mobile application in Flutter to visualize the Assets and Components of Companies in a tree view format.
 
-## Índice
+## Index
 
-1. [Requisitos](#requisitos)
-2. [Instalação](#instalação)
-3. [Configuração](#configuração)
-4. [Uso](#uso)
-5. [Protótipo](#protótipo)
-6. [Demonstração](#demonstração)
-7. [Estrutura do Projeto](#estrutura-do-projeto)
+1. [Requirements](#requirements)
+2. [Instalation](#instalation)
+3. [Configuration](#configuration)
+4. [Usage](#usage)
+5. [Prototype](#prototype)
+6. [Demonstration](#demonstration)
+7. [Project Structure](#project-structure)
 
-## Requisitos
+## Requirements
+
+To run this project, you will need to install [Git](https://git-scm.com/downloads), [Android Studio](https://developer.android.com/studio/install?hl=pt-br), and [Flutter](https://docs.flutter.dev/get-started/install) on your machine. You can use Android Studio IDE to view the project or use another IDE of your choice, such as [VSCode](https://code.visualstudio.com/download).
 
 Para rodar esse projeto você precisará instalar o [Git](https://git-scm.com/downloads), [Android Studio](https://developer.android.com/studio/install?hl=pt-br) e o [Flutter](https://docs.flutter.dev/get-started/install) na sua máquina. Você pode usar a IDE do Android Studio para visualizar o projeto ou usar outra IDE de sua preferência, como [VSCode](https://code.visualstudio.com/download).
 
-## Instalação
+## Instalation
 
-Para instalar o projeto, abra o **Explorador de Arquivos** e crie uma pasta no diretório de sua preferência, navegue até essa pasta, abra o terminal e execute o seguinte comando:
+To install the project, open File Explorer and create a folder in the directory of your choice, navigate to that folder, open the terminal, and run the following command:
 
 ```bash
 $ git clone http://github.com/zarref-semog/tractian-challenge.git
 ```
 
-Abra o Android Studio e execute os [seguintes passos](https://developer.android.com/studio/run/managing-avds?hl=pt-br).
+Open Android Studio and follow these [steps](https://developer.android.com/studio/run/managing-avds?hl=pt-br).
 
-## Configuração
+## Configuration
 
-Na pasta do projeto, abra o terminal e execute o seguinte comando:
-
+In the project folder, open the terminal and run the following command:
 ```bash
 $ flutter doctor
 ```
 
-Para aceitar a licença do Android, execute:
+To accept the Android license, run:
 
 ```bash
 $ flutter doctor --android-licenses
 ```
 
-Verifique novamente se está tudo certo:
+Check again if everything is correct:
+
 ```bash
 $ flutter doctor
 ```
 
-Com isso, o seu ambiente estará pronto para executar a aplicação.
+With this, your environment will be ready to run the application.
 
-## Uso
+## Usage
 
-Abra o Android Studio. Selecione a opção **More Actions->Virtual Device Manager** e inicialize o dispositivo virtual. Quando o dispositivo estiver pronto, abra o terminal na pasta do projeto e execute o seguinte comando:
+Open Android Studio. Select the option More Actions->Virtual Device Manager and start the virtual device. When the device is ready, open the terminal in the project folder and run the following command:
 
 ```bash
 $ flutter pub get
 ```
-Isso irá instalar todas as dependências do projeto. 
+This will install all project dependencies.
 
-Em seguida, execute ```flutter run``` para rodar o projeto:
+Next, run ```flutter run``` to start the project:
 
 ```bash
 $ flutter run
 ```
 
-## Protótipo
+## Prototype
 
-[Link do Protótipo](https://www.figma.com/design/IP50SSLkagXsUNWiZj0PjP/%5BCareers%5D-Flutter-Challenge-v2?node-id=0-1&t=3g9gWmzy26ibYRyT-1)
+[Prototype Link](https://www.figma.com/design/IP50SSLkagXsUNWiZj0PjP/%5BCareers%5D-Flutter-Challenge-v2?node-id=0-1&t=3g9gWmzy26ibYRyT-1)
 
-## Demonstração
+## Demonstration
 
-[Link do Video](https://youtube.com)
+[Video Link](https://youtube.com)
 
 ## Estrutura do Projeto
 
@@ -88,15 +90,15 @@ tractian-challenge
 ├── pubspec.yaml
 ```
 
-- Os diretórios **android** e **ios** contêm os arquivos necessários para rodar a aplicação nos respectivos sistemas operacioanis.
+- The android and ios directories contain the necessary files to run the application on their respective operating systems.
 
-- O diretório **images** contém as imagens utilizadas na aplicação.
-  > Qualquer arquivo dentro de **images** deve ser adicionado ao arquivo pubspec.yaml dentro de **assets**.
+- The images directory contains the images used in the application.
+  > Any file within images should be added to the pubspec.yaml file under assets..
 
-- O diretório **lib** contém os subdiretórios **models** (modelos), **screens** (telas), **api** (arquivo JSON), **components** (widgets customizados).
+- The lib directory contains the subdirectories models (models), screens (screens), api (JSON file), components (custom widgets)..
 
-- O diretório **lib** contém os arquivos **router_generator** (gerador de rotas) e **main.dart**.
+- The lib directory contains the router_generator (route generator) and main.dart files.
+  
+- The pubspec.yml and pubspec-lock files contain assets, settings, and other project dependencies.
 
-- Os arquivos **pubspec.yml** e **pubspec-lock** contêm assets, configurações e outras dependências do projeto.
-
-Desenvolvido por [Murilo Gomes Ferraz](https://github.com/zarref-semog)
+Developed by [Murilo Gomes Ferraz](https://github.com/zarref-semog)
