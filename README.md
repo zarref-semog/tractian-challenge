@@ -1,4 +1,4 @@
-# TRACTIAN CHALLENGE MOBILE - ASSET TREE VIEW
+# TRACTIAN CHALLENGE MOBILE
 
 Develop a mobile application in Flutter to visualize the Assets and Components of Companies in a tree view format.
 
