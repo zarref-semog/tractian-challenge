@@ -3,6 +3,8 @@ import 'package:flutter_simple_treeview/flutter_simple_treeview.dart';
 import 'package:tractian_challenge/components/customized_button.dart';
 import 'dart:convert';
 
+import 'package:tractian_challenge/main.dart';
+
 class AssetTree extends StatefulWidget {
   final List<Map<String, dynamic>> data;
 
@@ -150,7 +152,16 @@ class _AssetTreeState extends State<AssetTree> {
               child: TextField(
                 controller: searchController,
                 onEditingComplete: () {
-                  expandParents(_treeController, searchController.text);
+                  if (searchController.text != "") {
+                    expandParents(_treeController, searchController.text);
+                  } else {
+                    FocusScope.of(context).unfocus();
+                    setState(() {
+                      sensorFilter = false;
+                      alertFilter = false;
+                      _updateTreeNodes(widget.data);
+                    });
+                  }
                 },
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(0.0),

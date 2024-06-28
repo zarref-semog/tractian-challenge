@@ -37,6 +37,22 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_simple_treeview: ^3.0.2
   path_provider: ^2.1.3
+  flutter_native_splash: ^2.4.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_native_splash:
+  color: "#17192d"
+  image: "images/logo.png"
+  android: true
+  ios: true
+
+flutter_icons:
+  image_path: "images/tractian.png"
+  ios: true
+  remove_alpha_ios: true
+  android: "launcher_icon"
+  adaptive_icon_background: "#17192d"
+  adaptive_icon_foreground: "images/tractian.png"
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +83,7 @@ flutter:
     - images/component.png
     - images/location.png
     - images/logo.png
+    - images/tractian.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
