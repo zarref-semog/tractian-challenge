@@ -6,6 +6,8 @@ class Component {
   String status;
   String gatewayId;
   String icon = "component.png";
+  String parentId;
+  String locationId;
   List<dynamic> children = [];
 
   Component(
@@ -14,5 +16,7 @@ class Component {
       this.sensorId = "",
       this.sensorType = "",
       this.status = "",
-      this.gatewayId = ""});
+      this.gatewayId = "",
+      this.parentId = "",
+      this.locationId = ""});
 }

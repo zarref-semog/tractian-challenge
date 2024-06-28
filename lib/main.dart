@@ -37,7 +37,8 @@ List<Map<String, dynamic>> buildTree(Map<String, dynamic> data) {
   data.forEach((companyId, value) {
     if (companyId != "companies") {
       for (var loc in value["locations"]) {
-        locations[loc["id"]] = Location(id: loc["id"], name: loc["name"]);
+        locations[loc["id"]] = Location(
+            id: loc["id"], name: loc["name"], parentId: loc["parentId"] ?? "");
       }
     }
   });
@@ -48,19 +49,21 @@ List<Map<String, dynamic>> buildTree(Map<String, dynamic> data) {
       for (var asset in value["assets"]) {
         if (asset.containsKey("sensorId") && asset["sensorId"] != null) {
           components[asset["id"]] = Component(
-            id: asset["id"],
-            name: asset["name"],
-            sensorId: asset["sensorId"],
-            sensorType: asset["sensorType"],
-            status: asset["status"],
-            gatewayId: asset["gatewayId"],
-          );
+              id: asset["id"],
+              name: asset["name"],
+              sensorId: asset["sensorId"],
+              sensorType: asset["sensorType"],
+              status: asset["status"],
+              gatewayId: asset["gatewayId"],
+              parentId: asset["parentId"] ?? "",
+              locationId: asset["locationId"] ?? "");
         } else {
           assets[asset["id"]] = Asset(
-            id: asset["id"],
-            name: asset["name"],
-            status: asset["status"],
-          );
+              id: asset["id"],
+              name: asset["name"],
+              status: asset["status"],
+              parentId: asset["parentId"] ?? "",
+              locationId: asset["locationId"] ?? "");
         }
       }
     }
@@ -104,6 +107,7 @@ List<Map<String, dynamic>> buildTree(Map<String, dynamic> data) {
   List<Map<String, dynamic>> result = [];
   companies.forEach((companyId, company) {
     result.add({
+      "id": company.id,
       "name": company.name,
       "children": serializeChildren(company.children),
     });
@@ -117,25 +121,33 @@ List<Map<String, dynamic>> serializeChildren(List<dynamic> children) {
   for (var child in children) {
     if (child is Location) {
       result.add({
+        "id": child.id,
         "name": child.name,
         "icon": child.icon,
+        "parentId": child.parentId,
         "children": serializeChildren(child.children),
       });
     } else if (child is Asset) {
       result.add({
+        "id": child.id,
         "name": child.name,
         "status": child.status,
         "icon": child.icon,
+        "parentId": child.parentId,
+        "locationId": child.locationId,
         "children": serializeChildren(child.children),
       });
     } else if (child is Component) {
       result.add({
+        "id": child.id,
         "name": child.name,
         "sensorId": child.sensorId,
         "sensorType": child.sensorType,
         "status": child.status,
         "gatewayId": child.gatewayId,
         "icon": child.icon,
+        "parentId": child.parentId,
+        "locationId": child.locationId,
         "children": serializeChildren(child.children),
       });
     }

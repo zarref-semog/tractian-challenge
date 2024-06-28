@@ -36,6 +36,7 @@ class _AssetTreeState extends State<AssetTree> {
 
   TreeNode _buildTreeNode(Map<String, dynamic> data) {
     return TreeNode(
+      key: Key(data['id']),
       content: Row(
         children: [
           Image.asset('images/${data['icon']}'),
@@ -43,11 +44,45 @@ class _AssetTreeState extends State<AssetTree> {
           if (data['sensorType'] == "energy")
             Icon(Icons.electric_bolt, color: Colors.green),
           if (data['status'] == "alert")
-            Text('•', style: TextStyle(color: Colors.red, fontSize: 40.0)),
+            Icon(
+              Icons.circle,
+              color: Colors.red,
+              size: 12.0,
+            )
         ],
       ),
       children: _buildTreeNodes(data['children'] ?? []),
     );
+  }
+
+  List<String> findAssetLocation(List<Map<String, dynamic>> data, String name) {
+    List<String> parents = [];
+
+    void findParents(List<Map<String, dynamic>> dataList, String targetName,
+        List<String> currentPath) {
+      for (var map in dataList) {
+        if (map['name'] == targetName) {
+          parents.addAll(currentPath); // Adiciona todos os nós pais atuais
+        }
+
+        if (map.containsKey('children') && map['children'] is List) {
+          List<String> newPath = List.from(currentPath);
+          newPath.add(map['id']); // Adiciona o nó atual ao caminho atual
+          findParents(map['children'], targetName,
+              newPath); // Recursivamente busca nos filhos
+        }
+      }
+    }
+
+    findParents(data, name, []);
+    return parents;
+  }
+
+  void expandParents(TreeController controller, String name) {
+    var array = findAssetLocation(widget.data, name);
+    for (var parent in array) {
+      setState(() => controller.expandNode(Key(parent)));
+    }
   }
 
   @override
@@ -57,7 +92,7 @@ class _AssetTreeState extends State<AssetTree> {
         title: Text("Assets", style: TextStyle(color: Colors.white)),
         leading: BackButton(
           color: Colors.white,
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.pushNamed(context, '/'),
         ),
         backgroundColor: Color.fromARGB(255, 23, 25, 45),
         centerTitle: true,
@@ -70,11 +105,8 @@ class _AssetTreeState extends State<AssetTree> {
               height: 50.0,
               child: TextField(
                 controller: searchController,
-                onChanged: (value) {
-                  // Filtra os dados com base na entrada de pesquisa
-                  List<Map<String, dynamic>> filteredData = _filterData(value);
-                  // Atualiza os nós da árvore com os novos dados filtrados
-                  _updateTreeNodes(filteredData);
+                onEditingComplete: () {
+                  expandParents(_treeController, searchController.text);
                 },
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(0.0),
@@ -108,7 +140,11 @@ class _AssetTreeState extends State<AssetTree> {
                   icon: Icons.electric_bolt,
                   height: 40.0,
                   width: 200.0,
-                  onTap: () {},
+                  onTap: () {
+                    _updateTreeNodes(widget.data
+                        .where((element) => element['sensorType'] == 'energy')
+                        .toList());
+                  },
                 ),
                 SizedBox(width: 10.0),
                 CustomizedButton(
@@ -116,7 +152,11 @@ class _AssetTreeState extends State<AssetTree> {
                   icon: Icons.warning_amber_rounded,
                   height: 40.0,
                   width: 100.0,
-                  onTap: () {},
+                  onTap: () {
+                    _updateTreeNodes(widget.data
+                        .where((element) => element['status'] == 'alert')
+                        .toList());
+                  },
                 ),
               ],
             ),
@@ -141,15 +181,5 @@ class _AssetTreeState extends State<AssetTree> {
         ],
       ),
     );
-  }
-
-  List<Map<String, dynamic>> _filterData(String searchTerm) {
-    // Lógica de filtragem dos dados com base no termo de pesquisa
-    return widget.data.where((item) {
-      return item['name']
-          .toString()
-          .toLowerCase()
-          .contains(searchTerm.toLowerCase());
-    }).toList();
   }
 }
