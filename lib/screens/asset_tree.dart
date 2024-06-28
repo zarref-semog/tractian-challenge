@@ -66,14 +66,14 @@ class _AssetTreeState extends State<AssetTree> {
         List<String> currentPath) {
       for (var map in dataList) {
         if (map['name'].toUpperCase().contains(targetName.toUpperCase())) {
-          parents.addAll(currentPath); // Adiciona todos os nós pais atuais
+          parents.addAll(currentPath); 
         }
 
         if (map.containsKey('children') && map['children'] is List) {
           List<String> newPath = List.from(currentPath);
-          newPath.add(map['id']); // Adiciona o nó atual ao caminho atual
+          newPath.add(map['id']); 
           findParents(map['children'], targetName,
-              newPath); // Recursivamente busca nos filhos
+              newPath);
         }
       }
     }
