@@ -16,6 +16,8 @@ class _AssetTreeState extends State<AssetTree> {
   final TextEditingController searchController = TextEditingController();
   final TreeController _treeController =
       TreeController(allNodesExpanded: false);
+  bool sensorFilter = false;
+  bool alertFilter = false;
   List<TreeNode> _treeNodes = [];
 
   @override
@@ -61,7 +63,7 @@ class _AssetTreeState extends State<AssetTree> {
     void findParents(List<Map<String, dynamic>> dataList, String targetName,
         List<String> currentPath) {
       for (var map in dataList) {
-        if (map['name'] == targetName) {
+        if (map['name'].toUpperCase().contains(targetName.toUpperCase())) {
           parents.addAll(currentPath); // Adiciona todos os nós pais atuais
         }
 
@@ -83,6 +85,48 @@ class _AssetTreeState extends State<AssetTree> {
     for (var parent in array) {
       setState(() => controller.expandNode(Key(parent)));
     }
+  }
+
+  List<Map<String, dynamic>> filterNodesWithEnergySensor(
+      List<Map<String, dynamic>> data) {
+    List<Map<String, dynamic>> result = [];
+
+    for (var map in data) {
+      if (map['sensorType'] == 'energy') {
+        result.add(map);
+      } else if (map.containsKey('children')) {
+        var filteredChildren = filterNodesWithEnergySensor(map['children']);
+        if (filteredChildren.isNotEmpty) {
+          result.add({
+            ...map,
+            'children': filteredChildren,
+          });
+        }
+      }
+    }
+
+    return result;
+  }
+
+  List<Map<String, dynamic>> filterNodesWithAlertStatus(
+      List<Map<String, dynamic>> data) {
+    List<Map<String, dynamic>> result = [];
+
+    for (var map in data) {
+      if (map['status'] == 'alert') {
+        result.add(map);
+      } else if (map.containsKey('children')) {
+        var filteredChildren = filterNodesWithAlertStatus(map['children']);
+        if (filteredChildren.isNotEmpty) {
+          result.add({
+            ...map,
+            'children': filteredChildren,
+          });
+        }
+      }
+    }
+
+    return result;
   }
 
   @override
@@ -141,9 +185,17 @@ class _AssetTreeState extends State<AssetTree> {
                   height: 40.0,
                   width: 200.0,
                   onTap: () {
-                    _updateTreeNodes(widget.data
-                        .where((element) => element['sensorType'] == 'energy')
-                        .toList());
+                    setState(() {
+                      alertFilter = false;
+                      sensorFilter = !sensorFilter;
+                    });
+                    if (sensorFilter) {
+                      var filteredData =
+                          filterNodesWithEnergySensor(widget.data);
+                      _updateTreeNodes(filteredData);
+                    } else {
+                      _updateTreeNodes(widget.data);
+                    }
                   },
                 ),
                 SizedBox(width: 10.0),
@@ -153,9 +205,17 @@ class _AssetTreeState extends State<AssetTree> {
                   height: 40.0,
                   width: 100.0,
                   onTap: () {
-                    _updateTreeNodes(widget.data
-                        .where((element) => element['status'] == 'alert')
-                        .toList());
+                    setState(() {
+                      alertFilter = !alertFilter;
+                      sensorFilter = false;
+                    });
+                    if (alertFilter) {
+                      var filteredData =
+                          filterNodesWithAlertStatus(widget.data);
+                      _updateTreeNodes(filteredData);
+                    } else {
+                      _updateTreeNodes(widget.data);
+                    }
                   },
                 ),
               ],
