@@ -16,8 +16,6 @@ Develop a mobile application in Flutter to visualize the Assets and Components o
 
 To run this project, you will need to install [Git](https://git-scm.com/downloads), [Android Studio](https://developer.android.com/studio/install?hl=pt-br), and [Flutter](https://docs.flutter.dev/get-started/install) on your machine. You can use Android Studio IDE to view the project or use another IDE of your choice, such as [VSCode](https://code.visualstudio.com/download).
 
-Para rodar esse projeto você precisará instalar o [Git](https://git-scm.com/downloads), [Android Studio](https://developer.android.com/studio/install?hl=pt-br) e o [Flutter](https://docs.flutter.dev/get-started/install) na sua máquina. Você pode usar a IDE do Android Studio para visualizar o projeto ou usar outra IDE de sua preferência, como [VSCode](https://code.visualstudio.com/download).
-
 ## Instalation
 
 To install the project, open File Explorer and create a folder in the directory of your choice, navigate to that folder, open the terminal, and run the following command:
