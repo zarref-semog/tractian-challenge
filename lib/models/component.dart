@@ -8,7 +8,7 @@ class Component {
   String icon = "component.png";
   String parentId;
   String locationId;
-  List<dynamic> children = [];
+  List<dynamic> children;
 
   Component(
       {this.id = "",
@@ -18,5 +18,6 @@ class Component {
       this.status = "",
       this.gatewayId = "",
       this.parentId = "",
-      this.locationId = ""});
+      this.locationId = "",
+      this.children = const []});
 }

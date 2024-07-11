@@ -12,5 +12,6 @@ class Asset {
       this.name = "",
       this.status,
       this.parentId = "",
-      this.locationId = ""});
+      this.locationId = "",
+      this.children = const []});
 }
