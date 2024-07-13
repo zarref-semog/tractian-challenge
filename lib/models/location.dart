@@ -3,7 +3,11 @@ class Location {
   String name;
   String icon = "location.png";
   String parentId;
-  List<dynamic> children = [];
+  List<dynamic> children;
 
-  Location({this.id = "", this.name = "", this.parentId = ""});
+  Location(
+      {this.id = "",
+      this.name = "",
+      this.parentId = "",
+      this.children = const []});
 }
