@@ -1,16 +1,11 @@
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
-var companies = convert.jsonEncode(
-    http.get(Uri.parse('https://fake-api.tractian.com/companies/')));
-
 class ApiService {
-  final String baseUrl;
+  static String baseUrl = 'https://fake-api.tractian.com';
 
-  ApiService(this.baseUrl);
-
-  Future<List<dynamic>> getCompanies(String endpoint) async {
-    final response = await http.get(Uri.parse('$baseUrl$endpoint'));
+  static Future<List<dynamic>> getCompanies() async {
+    final response = await http.get(Uri.parse('$baseUrl/companies'));
 
     if (response.statusCode == 200) {
       return convert.jsonDecode(response.body);
@@ -19,8 +14,9 @@ class ApiService {
     }
   }
 
-  Future<Map<String, dynamic>> getLocations(String endpoint) async {
-    final response = await http.get(Uri.parse('$baseUrl$endpoint'));
+  static Future<List<dynamic>> getLocations(String id) async {
+    final response =
+        await http.get(Uri.parse('$baseUrl/companies/$id/locations'));
 
     if (response.statusCode == 200) {
       return convert.jsonDecode(response.body);
@@ -29,8 +25,8 @@ class ApiService {
     }
   }
 
-  Future<Map<String, dynamic>> getAssets(String endpoint) async {
-    final response = await http.get(Uri.parse('$baseUrl$endpoint'));
+  static Future<List<dynamic>> getAssets(String id) async {
+    final response = await http.get(Uri.parse('$baseUrl/companies/$id/assets'));
 
     if (response.statusCode == 200) {
       return convert.jsonDecode(response.body);
